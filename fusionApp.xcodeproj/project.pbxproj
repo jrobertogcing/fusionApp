@@ -15,6 +15,8 @@
 		88E76892222B0D62007A0CCB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88E76890222B0D62007A0CCB /* LaunchScreen.storyboard */; };
 		88E7689D222B0D63007A0CCB /* fusionAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E7689C222B0D63007A0CCB /* fusionAppTests.swift */; };
 		88E768A8222B0D63007A0CCB /* fusionAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E768A7222B0D63007A0CCB /* fusionAppUITests.swift */; };
+		88E768B6222B0F54007A0CCB /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E768B5222B0F54007A0CCB /* LogInViewController.swift */; };
+		88E768B9222B119E007A0CCB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E768B8222B119E007A0CCB /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		88E768A3222B0D63007A0CCB /* fusionAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = fusionAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		88E768A7222B0D63007A0CCB /* fusionAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fusionAppUITests.swift; sourceTree = "<group>"; };
 		88E768A9222B0D63007A0CCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		88E768B5222B0F54007A0CCB /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		88E768B8222B119E007A0CCB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,8 @@
 				88E76884222B0D60007A0CCB /* AppDelegate.swift */,
 				88E76886222B0D60007A0CCB /* ViewController.swift */,
 				88E76888222B0D60007A0CCB /* Main.storyboard */,
+				88E768BA222B11C7007A0CCB /* Home */,
+				88E768B7222B118D007A0CCB /* LogIn */,
 				88E7688E222B0D62007A0CCB /* Assets.xcassets */,
 				88E76890222B0D62007A0CCB /* LaunchScreen.storyboard */,
 				88E76893222B0D62007A0CCB /* Info.plist */,
@@ -126,6 +132,22 @@
 				88E768A9222B0D63007A0CCB /* Info.plist */,
 			);
 			path = fusionAppUITests;
+			sourceTree = "<group>";
+		};
+		88E768B7222B118D007A0CCB /* LogIn */ = {
+			isa = PBXGroup;
+			children = (
+				88E768B5222B0F54007A0CCB /* LogInViewController.swift */,
+			);
+			path = LogIn;
+			sourceTree = "<group>";
+		};
+		88E768BA222B11C7007A0CCB /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				88E768B8222B119E007A0CCB /* HomeViewController.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,6 +281,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88E768B9222B119E007A0CCB /* HomeViewController.swift in Sources */,
+				88E768B6222B0F54007A0CCB /* LogInViewController.swift in Sources */,
 				88E76887222B0D60007A0CCB /* ViewController.swift in Sources */,
 				88E76885222B0D60007A0CCB /* AppDelegate.swift in Sources */,
 				88E7688D222B0D60007A0CCB /* fusionApp.xcdatamodeld in Sources */,
