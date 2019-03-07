@@ -8,15 +8,168 @@
 
 import UIKit
 import CoreData
+import Firebase
+import GoogleSignIn
+import FBSDKLoginKit
+
+ 
+
+
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
+    
     var window: UIWindow?
 
+    var flagReceived = ""
+
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        
+        if error != nil {
+            // ...
+            return
+        }
+        
+        guard let authentication = user.authentication else { return }
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                       accessToken: authentication.accessToken)
+        
+        
+        print("credential")
+        print(credential)
+        
+        
+        //TAKE USER INFORMATION FROM GMAIL AND SAVE IT TO
+        guard let givenName = user.profile.givenName else {return}
+        guard let familyName = user.profile.familyName else {return}
+        guard let email = user.profile.email else {return}
+        
+        UserDefaults.standard.set(givenName, forKey: "name")
+        UserDefaults.standard.set(familyName, forKey: "lastName")
+        UserDefaults.standard.set(email, forKey: "email")
+        
+        
+        Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
+            if let error = error {
+                print("error GMAIL")
+                print(error)
+                
+                
+                return
+            } else{
+                
+                print(authResult?.user as Any)
+                
+                
+                // Send to Home View Controller
+                let mainStoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let homePage = mainStoryboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+                
+                homePage.nameR = givenName
+                
+                self.window?.rootViewController = homePage
+                
+                
+            }
+            
+        }
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        // Perform any operations when the user disconnects from app here.
+
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        
+        if flagReceived == "Facebook"{
+            
+            let handled = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, sourceApplication: options[.sourceApplication] as? String, annotation: options[.annotation])
+            return handled
+
+        } else if flagReceived == "Gmail"{
+            
+             return GIDSignIn.sharedInstance().handle(url,sourceApplication:options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String, annotation: [:])
+            
+        }
+       
+        
+       return false
+        
+    }
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+
+        FirebaseApp.configure()
+        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+        GIDSignIn.sharedInstance().delegate = self
+        
+        
+        if let flag = UserDefaults.standard.string(forKey: "flagRegistro")  {
+            
+            flagReceived = flag
+            
+        }
+        print("flagReceived:");        print(flagReceived);
+        
+        
+        if flagReceived == "Facebook" {
+            
+            
+            //Facebook AUTH
+            // Facebook
+            FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+            
+            if (FBSDKAccessToken.currentAccessTokenIsActive()){
+                
+                self.window = UIWindow(frame: UIScreen.main.bounds)
+                
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                
+                let initialViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
+                
+                self.window?.rootViewController = initialViewController
+                self.window?.makeKeyAndVisible()
+                
+                
+            }
+                
+        } else if flagReceived == "Gmail"{
+            
+           
+            //GMAIL AUTH
+            Auth.auth().addStateDidChangeListener { (auth, user) in
+                if user != nil {
+                    
+                    
+                    
+                    self.window = UIWindow(frame: UIScreen.main.bounds)
+                    
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    
+                    let initialViewController = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
+                    
+                    self.window?.rootViewController = initialViewController
+                    self.window?.makeKeyAndVisible()
+                    
+                    
+                    
+                    
+                } else {
+                    // user is not signed in
+                    // go to login controller
+                }
+                
+            }
+            
+            
+        }
+
+        
+
+
         return true
     }
 

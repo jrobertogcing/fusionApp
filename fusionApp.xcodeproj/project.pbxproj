@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8891578E223197D6001E907F /* BoulderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8891578D223197D6001E907F /* BoulderViewController.swift */; };
+		88C39D1F2231934500B3EFA7 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C39D1E2231934500B3EFA7 /* MenuViewController.swift */; };
+		88DD62EB222E426400A1A040 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88DD62E7222E426200A1A040 /* FBSDKCoreKit.framework */; };
+		88DD62EC222E426400A1A040 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88DD62E8222E426300A1A040 /* FBSDKLoginKit.framework */; };
+		88DD62ED222E426400A1A040 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88DD62E9222E426300A1A040 /* Bolts.framework */; };
+		88DD62EE222E426400A1A040 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88DD62EA222E426400A1A040 /* FBSDKShareKit.framework */; };
 		88E76885222B0D60007A0CCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E76884222B0D60007A0CCB /* AppDelegate.swift */; };
 		88E76887222B0D60007A0CCB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E76886222B0D60007A0CCB /* ViewController.swift */; };
 		88E7688A222B0D60007A0CCB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88E76888222B0D60007A0CCB /* Main.storyboard */; };
@@ -17,6 +23,7 @@
 		88E768A8222B0D63007A0CCB /* fusionAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E768A7222B0D63007A0CCB /* fusionAppUITests.swift */; };
 		88E768B6222B0F54007A0CCB /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E768B5222B0F54007A0CCB /* LogInViewController.swift */; };
 		88E768B9222B119E007A0CCB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E768B8222B119E007A0CCB /* HomeViewController.swift */; };
+		88E768BC222B1FEB007A0CCB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88E768BB222B1FEB007A0CCB /* GoogleService-Info.plist */; };
 		BEF1950ED71E3F35E5A48A63 /* Pods_fusionApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E04CDBEF3C2F606B77F9463 /* Pods_fusionApp.framework */; };
 		D88CAF18DC0624113A9E5DE7 /* Pods_fusionAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C79D1AB43F0CC34D79C63DEE /* Pods_fusionAppUITests.framework */; };
 		D9B53325AFC019A09474A909 /* Pods_fusionAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F346FE404D0EDACFAF829BF8 /* Pods_fusionAppTests.framework */; };
@@ -44,6 +51,12 @@
 		3BBFC89FB3F36D8192398A0B /* Pods-fusionAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusionAppTests.debug.xcconfig"; path = "Target Support Files/Pods-fusionAppTests/Pods-fusionAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5E04CDBEF3C2F606B77F9463 /* Pods_fusionApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fusionApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6396A04C338121D623308BF5 /* Pods-fusionApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusionApp.debug.xcconfig"; path = "Target Support Files/Pods-fusionApp/Pods-fusionApp.debug.xcconfig"; sourceTree = "<group>"; };
+		8891578D223197D6001E907F /* BoulderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoulderViewController.swift; sourceTree = "<group>"; };
+		88C39D1E2231934500B3EFA7 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		88DD62E7222E426200A1A040 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		88DD62E8222E426300A1A040 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		88DD62E9222E426300A1A040 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		88DD62EA222E426400A1A040 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		88E76881222B0D60007A0CCB /* fusionApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fusionApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88E76884222B0D60007A0CCB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88E76886222B0D60007A0CCB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +73,7 @@
 		88E768A9222B0D63007A0CCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		88E768B5222B0F54007A0CCB /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		88E768B8222B119E007A0CCB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		88E768BB222B1FEB007A0CCB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		92F40070ABC5BEA9121EB679 /* Pods-fusionApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusionApp.release.xcconfig"; path = "Target Support Files/Pods-fusionApp/Pods-fusionApp.release.xcconfig"; sourceTree = "<group>"; };
 		9A2588DE4B02D68871B050C4 /* Pods-fusionAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fusionAppUITests.release.xcconfig"; path = "Target Support Files/Pods-fusionAppUITests/Pods-fusionAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		C79D1AB43F0CC34D79C63DEE /* Pods_fusionAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fusionAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,6 +87,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEF1950ED71E3F35E5A48A63 /* Pods_fusionApp.framework in Frameworks */,
+				88DD62EB222E426400A1A040 /* FBSDKCoreKit.framework in Frameworks */,
+				88DD62EE222E426400A1A040 /* FBSDKShareKit.framework in Frameworks */,
+				88DD62EC222E426400A1A040 /* FBSDKLoginKit.framework in Frameworks */,
+				88DD62ED222E426400A1A040 /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,6 +123,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8891578F223197FA001E907F /* Boulder */ = {
+			isa = PBXGroup;
+			children = (
+				8891578D223197D6001E907F /* BoulderViewController.swift */,
+			);
+			path = Boulder;
+			sourceTree = "<group>";
+		};
+		889157902231980D001E907F /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				88C39D1E2231934500B3EFA7 /* MenuViewController.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
 		88E76878222B0D60007A0CCB = {
 			isa = PBXGroup;
 			children = (
@@ -133,12 +167,19 @@
 				88E76884222B0D60007A0CCB /* AppDelegate.swift */,
 				88E76886222B0D60007A0CCB /* ViewController.swift */,
 				88E76888222B0D60007A0CCB /* Main.storyboard */,
-				88E768BA222B11C7007A0CCB /* Home */,
 				88E768B7222B118D007A0CCB /* LogIn */,
+				889157902231980D001E907F /* Menu */,
+				8891578F223197FA001E907F /* Boulder */,
+				88E768BA222B11C7007A0CCB /* Home */,
 				88E7688E222B0D62007A0CCB /* Assets.xcassets */,
 				88E76890222B0D62007A0CCB /* LaunchScreen.storyboard */,
 				88E76893222B0D62007A0CCB /* Info.plist */,
+				88E768BB222B1FEB007A0CCB /* GoogleService-Info.plist */,
 				88E7688B222B0D60007A0CCB /* fusionApp.xcdatamodeld */,
+				88DD62E9222E426300A1A040 /* Bolts.framework */,
+				88DD62E7222E426200A1A040 /* FBSDKCoreKit.framework */,
+				88DD62E8222E426300A1A040 /* FBSDKLoginKit.framework */,
+				88DD62EA222E426400A1A040 /* FBSDKShareKit.framework */,
 			);
 			path = fusionApp;
 			sourceTree = "<group>";
@@ -187,7 +228,6 @@
 				CE393977B88A40DD9B8DFDD9 /* Pods-fusionAppUITests.debug.xcconfig */,
 				9A2588DE4B02D68871B050C4 /* Pods-fusionAppUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -301,6 +341,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				88E76892222B0D62007A0CCB /* LaunchScreen.storyboard in Resources */,
+				88E768BC222B1FEB007A0CCB /* GoogleService-Info.plist in Resources */,
 				88E7688F222B0D62007A0CCB /* Assets.xcassets in Resources */,
 				88E7688A222B0D60007A0CCB /* Main.storyboard in Resources */,
 			);
@@ -420,7 +461,14 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-fusionApp/Pods-fusionApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
@@ -434,7 +482,14 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
@@ -457,10 +512,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				88E768B9222B119E007A0CCB /* HomeViewController.swift in Sources */,
+				88C39D1F2231934500B3EFA7 /* MenuViewController.swift in Sources */,
 				88E768B6222B0F54007A0CCB /* LogInViewController.swift in Sources */,
 				88E76887222B0D60007A0CCB /* ViewController.swift in Sources */,
 				88E76885222B0D60007A0CCB /* AppDelegate.swift in Sources */,
 				88E7688D222B0D60007A0CCB /* fusionApp.xcdatamodeld in Sources */,
+				8891578E223197D6001E907F /* BoulderViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -570,6 +627,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -624,6 +682,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -638,6 +697,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2KAGQ44QH8;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/fusionApp",
+				);
 				INFOPLIST_FILE = fusionApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -657,6 +720,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2KAGQ44QH8;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/fusionApp",
+				);
 				INFOPLIST_FILE = fusionApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

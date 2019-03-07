@@ -16,6 +16,9 @@ target 'fusionApp' do
 	pod 'GoogleSignIn'
 	pod 'Fabric'
 	pod 'Crashlytics'
+	pod 'FacebookCore'
+  	pod 'FacebookLogin'
+  	pod 'FacebookShare'
 
 
   target 'fusionAppTests' do
