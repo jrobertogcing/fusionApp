@@ -48,6 +48,8 @@ class HomeViewController: UIViewController {
                 userLabel.text = name
 
             }
+            
+            fetchImage()
 
 
         } else {
@@ -100,7 +102,32 @@ class HomeViewController: UIViewController {
         
     }
     
+    //MARK: Fetch image Facebook
     
+    private func fetchImage() {
+        let imageURL = URL(string: "http://graph.facebook.com/10155363426747041/picture?type=large")
+        // https://www.anipedia.net/imagenes/gatos-800x375.jpg
+        // let imageURL = URL(string: "https://www.anipedia.net/imagenes/gatos-800x375.jpg")
+        
+        var image: UIImage?
+        if let url = imageURL {
+            //All network operations has to run on different thread(not on main thread).
+            DispatchQueue.global(qos: .userInitiated).async {
+                let imageData = NSData(contentsOf: url)
+                //All UI operations has to run on main thread.
+                DispatchQueue.main.async {
+                    if imageData != nil {
+                        image = UIImage(data: imageData! as Data)
+                       // self.userPictureImageView.image = image
+                        self.userImageView.image = image
+                        //self.userPictureImageView.sizeToFit()
+                    } else {
+                        image = nil
+                    }
+                }
+            }
+        }
+    }
     
 
 }
