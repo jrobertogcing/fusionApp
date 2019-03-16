@@ -105,6 +105,9 @@ class HomeViewController: UIViewController {
     //MARK: Fetch image Facebook
     
     private func fetchImage() {
+        
+        //Get image saved in NSUserdefault
+        
         let imageURL = URL(string: "http://graph.facebook.com/10155363426747041/picture?type=large")
         // https://www.anipedia.net/imagenes/gatos-800x375.jpg
         // let imageURL = URL(string: "https://www.anipedia.net/imagenes/gatos-800x375.jpg")

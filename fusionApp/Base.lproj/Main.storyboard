@@ -149,7 +149,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Escalador" translatesAutoresizingMaskIntoConstraints="NO" id="uuh-aH-Zd2">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uuh-aH-Zd2">
                                 <rect key="frame" x="112.5" y="238" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="Dfd-iD-ZQW"/>
@@ -343,7 +343,6 @@
     </scenes>
     <resources>
         <image name="Bloque" width="1280" height="720"/>
-        <image name="Escalador" width="335" height="297"/>
         <image name="agarre" width="91" height="78"/>
         <image name="cuerda" width="92" height="87"/>
         <image name="fondo_blanco" width="425" height="601"/>

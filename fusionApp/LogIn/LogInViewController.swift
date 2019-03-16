@@ -27,6 +27,7 @@ class LogInViewController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButt
     var userLastName  = ""
     var telephone = ""
     var userID  = ""
+    var userImage = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -202,12 +203,15 @@ class LogInViewController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButt
                 }
                 self.userLastName = (profile?.lastName)!
                 self.userID = (profile?.userID)!
+
                 
                 
                 // save new informatión in NSuserdefault
                 
                 UserDefaults.standard.set(self.userName, forKey: "name")
                 UserDefaults.standard.set(self.userLastName, forKey: "lastName")
+                UserDefaults.standard.set(self.userImage, forKey: "userImage")
+
                 
                 
                 print("loaded: \(String(describing: profile?.userID))")
