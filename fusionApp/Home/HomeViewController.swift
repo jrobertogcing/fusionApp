@@ -95,29 +95,6 @@ class HomeViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         
-//        if flagReceived == "Facebook"{
-//
-//            //Read image NSuserdefault
-//
-//            if userImageView.image == nil {
-//
-//
-//                if let imageData = UserDefaults.standard.data(forKey: "facebookImage"){
-//
-//                    userImageView.image = UIImage(data:imageData,scale:1.0)
-//
-//                } else {
-//
-//                    //Set generic user image.
-//                }
-//
-//            }
-//              //  userImageView.image = image
-//
-//
-//
-//
-//        }
     }
     
     

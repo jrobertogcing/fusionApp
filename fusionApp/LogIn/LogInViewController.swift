@@ -32,9 +32,6 @@ class LogInViewController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButt
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        
-       // faceLogInButton.delegate = self
         
     }
     
