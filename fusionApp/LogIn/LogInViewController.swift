@@ -196,21 +196,30 @@ class LogInViewController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButt
             
             if (error == nil) {
                 
-                if ((profile?.firstName) != nil){
-                    self.userName = (profile?.firstName)!
-                    
-                    
+                guard let profileName = profile?.firstName  else {
+                   return
                 }
-                self.userLastName = (profile?.lastName)!
-                self.userID = (profile?.userID)!
-
                 
+                guard let profileLastName = profile?.lastName  else {
+                    return
+                }
                 
+                guard let profileUserID = profile?.userID  else {
+                    return
+                }
+                
+                self.userName = profileName
+                
+                self.userLastName = profileLastName
+                
+                self.userID = profileUserID
+                
+                print(self.userID)
                 // save new informatión in NSuserdefault
                 
-                UserDefaults.standard.set(self.userName, forKey: "name")
-                UserDefaults.standard.set(self.userLastName, forKey: "lastName")
-                UserDefaults.standard.set(self.userImage, forKey: "userImage")
+                UserDefaults.standard.set(profileName, forKey: "name")
+                UserDefaults.standard.set(profileLastName, forKey: "lastName")
+                UserDefaults.standard.set(profileUserID, forKey: "userID")
 
                 
                 
