@@ -12,9 +12,6 @@ import Firebase
 import GoogleSignIn
 import FBSDKLoginKit
 
- 
-
-
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
@@ -39,23 +36,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         print("credential")
         print(credential)
         
-        
-        //TAKE USER INFORMATION FROM GMAIL AND SAVE IT TO
+        //Get data Gmail
         guard let givenName = user.profile.givenName else {return}
         guard let familyName = user.profile.familyName else {return}
         guard let email = user.profile.email else {return}
+        guard let image = user.profile.imageURL(withDimension: 100) else {return}
         
+        //Save information in NSUserdefault
         UserDefaults.standard.set(givenName, forKey: "name")
         UserDefaults.standard.set(familyName, forKey: "lastName")
         UserDefaults.standard.set(email, forKey: "email")
+        UserDefaults.standard.set(image.absoluteString, forKey: "image")
+        
+        guard let imageProfile = UserDefaults.standard.string(forKey: "image") else  {
+            return
+        }
+        print(imageProfile)
+        
         
         
         Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
             if let error = error {
                 print("error GMAIL")
                 print(error)
-                
-                
                 return
             } else{
                 
@@ -66,7 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                 let mainStoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let homePage = mainStoryboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
                 
-                homePage.nameR = givenName
+                //homePage.nameR = givenName
                 
                 self.window?.rootViewController = homePage
                 
@@ -142,7 +145,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             //GMAIL AUTH
             Auth.auth().addStateDidChangeListener { (auth, user) in
                 if user != nil {
-                    
                     
                     
                     self.window = UIWindow(frame: UIScreen.main.bounds)

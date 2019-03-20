@@ -31,8 +31,6 @@ class LogInViewController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButt
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
     }
     
 
@@ -143,19 +141,28 @@ class LogInViewController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButt
                 print("error GMAIL")
                 print(error)
                 
-                
                 return
             }
             
-            guard let givenName = user.profile.givenName else {return}
+//            //Get data Gmail
+//            guard let givenName = user.profile.givenName else {return}
+//            guard let familyName = user.profile.familyName else {return}
+//            guard let email = user.profile.email else {return}
+//           let dimension = round(100 * UIScreen.main.scale)
+//            guard let image = user.profile.imageURL(withDimension: UInt(dimension)) else {return}
+//
+//            let profilePicURL = user.profile.imageURL(withDimension: 200).absoluteString
+//            print(profilePicURL)
+//
+//            print(image)
+//
+//
+//            //Save information in NSUserdefault
+//            UserDefaults.standard.set(givenName, forKey: "name")
+//            UserDefaults.standard.set(familyName, forKey: "lastName")
+//            UserDefaults.standard.set(email, forKey: "email")
+//            UserDefaults.standard.set(image, forKey: "image")
 
-            // User is signed in
-            // Delete the local information, in case another user enter to the app
-            UserDefaults.standard.set("", forKey: "name")
-            UserDefaults.standard.set("", forKey: "lastName")
-            UserDefaults.standard.set("", forKey: "telephone")
-            UserDefaults.standard.set("", forKey: "email")
-            UserDefaults.standard.set("", forKey: "password")
             
             //set flag
             UserDefaults.standard.set("Gmail", forKey: "flagRegistro")
@@ -164,7 +171,7 @@ class LogInViewController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButt
             
             let nextViewController = storyBoard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
             
-            nextViewController.nameR = givenName
+           // nextViewController.nameR = givenName
             
             //  self.show(nextViewController, sender: nil)
             self.present(nextViewController, animated:true, completion:nil)
@@ -218,8 +225,6 @@ class LogInViewController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButt
                 UserDefaults.standard.set(profileLastName, forKey: "lastName")
                 UserDefaults.standard.set(profileUserID, forKey: "userID")
 
-                
-                
                 print("loaded: \(String(describing: profile?.userID))")
                 
                 completion("Ready")

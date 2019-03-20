@@ -40,8 +40,8 @@ class HomeViewController: UIViewController {
         if let flag = UserDefaults.standard.string(forKey: "flagRegistro")  {
             
             flagReceived = flag
-            
         }
+        
         if flagReceived == "Facebook"{
             
             
@@ -51,7 +51,6 @@ class HomeViewController: UIViewController {
                 
             }
             
-           
             if let firstOpen = UserDefaults.standard.string(forKey: "firstOpenFlag") {
                 
                 firstOpenFlag = firstOpen
@@ -67,7 +66,7 @@ class HomeViewController: UIViewController {
             } else {
                 
                 // Read image from NSUserdefault
-                if let imageData = UserDefaults.standard.data(forKey: "facebookImage"){
+                if let imageData = UserDefaults.standard.data(forKey: "userImage"){
 
                     userImageView.image = UIImage(data:imageData,scale:1.0)
 
@@ -80,17 +79,45 @@ class HomeViewController: UIViewController {
             }
             
             
-        } else {
-            if nameR != "" {
-                userLabel.text = nameR
-            } else {
-                userLabel.text = "Usuario"
+        } else if flagReceived == "Gmail" {
+            
+            if let name = UserDefaults.standard.string(forKey: "name")  {
+                
+                userLabel.text = name
             }
+            
+            if let firstOpen = UserDefaults.standard.string(forKey: "firstOpenFlag") {
+                
+                firstOpenFlag = firstOpen
+            }
+            
+            if firstOpenFlag == "notOpen" {
+                
+                fetchImage()
+                
+                UserDefaults.standard.set("firstOpen", forKey: "firstOpenFlag")
+                
+                
+            } else {
+                
+                // Read image from NSUserdefault
+                if let imageData = UserDefaults.standard.data(forKey: "userImage"){
+                    
+                    userImageView.image = UIImage(data:imageData,scale:1.0)
+                    
+                } else {
+                    
+                    //Set generic user image.
+                    print("no hay imagen")
+            
+                }
+                
+                
+            }
+            
         }
        
     }
-    
-    
     
     
     override func viewDidAppear(_ animated: Bool) {
@@ -98,12 +125,38 @@ class HomeViewController: UIViewController {
     }
     
     
+    //MARK: Logout ButtonAction
     
     @IBAction func loutGoogleButtonAction(_ sender: UIButton) {
       
-
         UserDefaults.standard.removeObject(forKey:"firstOpenFlag")
         
+        UserDefaults.standard.removeObject(forKey: "name")
+        UserDefaults.standard.removeObject(forKey: "lastName")
+        UserDefaults.standard.removeObject(forKey: "email")
+        UserDefaults.standard.removeObject(forKey: "image")
+        UserDefaults.standard.removeObject(forKey: "userImage")
+
+        
+        if flagReceived == "Gmail"{
+
+            // Delete all information in NSUserdefault Gmail
+            
+
+        
+        } else if flagReceived == "Facebook" {
+            
+          //  UserDefaults.standard.removeObject(forKey: "userImage")
+
+            // Delete all information in NSUserdefault Facebook
+
+
+            UserDefaults.standard.removeObject(forKey: "userID")
+            
+        }
+        
+        UserDefaults.standard.removeObject(forKey: "flagRegistro")
+
         
         GIDSignIn.sharedInstance().signOut()
         
@@ -119,50 +172,37 @@ class HomeViewController: UIViewController {
         
         let nextViewController = storyBoard.instantiateViewController(withIdentifier: "LogInViewController") as! LogInViewController
         self.present(nextViewController, animated:true, completion:nil)
-        
-    }
-    
-    @IBAction func viewOneButtonAction(_ sender: UIButton) {
-        
-        viewLabel.text = "Boulder"
-        
-    }
-    
-    @IBAction func viewTwoButtonAction(_ sender: UIButton) {
-        
-        viewLabel.text = "Vías"
 
-        
     }
     
-    @IBAction func viewThreeButtonAction(_ sender: UIButton) {
-        
-        viewLabel.text = "Retos Fusión"
-
-        
-    }
-    
-    //MARK: Fetch image Facebook
+    //MARK: Fetch user image
     
     private func fetchImage() {
         
-        
-        //Get saved User id NSUserDefault
-        guard let userID = UserDefaults.standard.string(forKey: "userID") else  {
-            return
-        }
-        
-        print(userID)
-        //Get image saved in NSUserdefault
-        
-       //let imageURL = URL(string: "http://graph.facebook.com/10155363426747041/picture?type=large")
-        // https://www.anipedia.net/imagenes/gatos-800x375.jpg
-        // let imageURL = URL(string: "https://www.anipedia.net/imagenes/gatos-800x375.jpg")
-        
-        let imageURL = URL(string: "http://graph.facebook.com/\(userID)/picture?type=large")
+        var imageURL: URL?
+        var image: UIImage?
 
         
-        var image: UIImage?
+        if flagReceived == "Facebook" {
+            
+            //Get saved User id NSUserDefault
+            guard let userID = UserDefaults.standard.string(forKey: "userID") else  {
+                return
+            }
+            imageURL = URL(string: "http://graph.facebook.com/\(userID)/picture?type=large")
+            
+        } else if flagReceived == "Gmail" {
+            
+            //Get saved User id NSUserDefault
+            guard let imageProfile = UserDefaults.standard.string(forKey: "image") else  {
+                return
+            }
+            
+            imageURL = URL(string: imageProfile)
+            
+            
+        }
+       
         if let url = imageURL {
             //All network operations has to run on different thread(not on main thread).
             DispatchQueue.global(qos: .userInitiated).async {
@@ -170,7 +210,7 @@ class HomeViewController: UIViewController {
                 
                 if imageData != nil {
                     //Save image in NSUserdefault as Data
-                    UserDefaults.standard.set(imageData, forKey: "facebookImage")
+                    UserDefaults.standard.set(imageData, forKey: "userImage")
                 }
                 //All UI operations has to run on main thread.
                 DispatchQueue.main.async {
@@ -187,5 +227,4 @@ class HomeViewController: UIViewController {
         }
     }
     
-
 }
