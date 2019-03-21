@@ -255,6 +255,9 @@
                                 <state key="normal" title="Intentalo!">
                                     <color key="titleColor" red="0.0" green="0.68179529910000003" blue="0.94395875929999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="Ly0-qf-urm" kind="show" id="eFV-RG-wVz"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -279,6 +282,21 @@
             </objects>
             <point key="canvasLocation" x="1812" y="132.68365817091455"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="E4c-qu-ut1">
+            <objects>
+                <viewController id="Ly0-qf-urm" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="m6t-LJ-pWc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="RK7-tw-Ugs"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RpY-Oo-TfX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2827" y="128"/>
+        </scene>
         <!--Menu View Controller-->
         <scene sceneID="hqd-Ix-N57">
             <objects>
@@ -293,10 +311,9 @@
                                     <constraint firstAttribute="height" constant="50" id="c8S-bu-rXM"/>
                                     <constraint firstAttribute="width" constant="50" id="f8g-G8-GCy"/>
                                 </constraints>
-                                <state key="normal" image="zapato"/>
+                                <state key="normal" image="home40"/>
                                 <connections>
-                                    <action selector="optionOneButtonAction:" destination="uq4-Gg-39P" eventType="touchUpInside" id="AeU-Z1-air"/>
-                                    <action selector="viewOneButtonAction:" destination="Y2F-49-qOa" eventType="touchUpInside" id="4oW-dV-3BW"/>
+                                    <action selector="optionThreeButtonAction:" destination="uq4-Gg-39P" eventType="touchUpInside" id="RY8-w4-9rv"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iVT-Jk-zXc">
@@ -306,10 +323,6 @@
                                     <constraint firstAttribute="width" constant="50" id="bmQ-An-Qba"/>
                                 </constraints>
                                 <state key="normal" image="cuerda"/>
-                                <connections>
-                                    <action selector="optionTwoButtonAction:" destination="uq4-Gg-39P" eventType="touchUpInside" id="aLZ-5N-uIu"/>
-                                    <action selector="viewTwoButtonAction:" destination="Y2F-49-qOa" eventType="touchUpInside" id="mA5-Dp-Rft"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cow-aA-qac">
                                 <rect key="frame" x="235" y="15" width="50" height="50"/>
@@ -318,10 +331,6 @@
                                     <constraint firstAttribute="width" constant="50" id="yYA-KH-HKk"/>
                                 </constraints>
                                 <state key="normal" image="cuerda"/>
-                                <connections>
-                                    <action selector="optionTwoButtonAction:" destination="uq4-Gg-39P" eventType="touchUpInside" id="daA-5U-nGn"/>
-                                    <action selector="viewTwoButtonAction:" destination="Y2F-49-qOa" eventType="touchUpInside" id="bJF-vS-Hhu"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pBA-gd-UQ0">
                                 <rect key="frame" x="305" y="15" width="50" height="50"/>
@@ -331,8 +340,7 @@
                                 </constraints>
                                 <state key="normal" image="agarre"/>
                                 <connections>
-                                    <action selector="optionThreeButtonAction:" destination="uq4-Gg-39P" eventType="touchUpInside" id="pOL-bt-GZJ"/>
-                                    <action selector="viewThreeButtonAction:" destination="Y2F-49-qOa" eventType="touchUpInside" id="4lH-Jm-lUt"/>
+                                    <action selector="optionOneButtonAction:" destination="uq4-Gg-39P" eventType="touchUpInside" id="t2J-qi-Jow"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OID-Qw-UWb">
@@ -342,10 +350,6 @@
                                     <constraint firstAttribute="width" constant="50" id="iTz-sA-jRZ"/>
                                 </constraints>
                                 <state key="normal" image="cuerda"/>
-                                <connections>
-                                    <action selector="optionTwoButtonAction:" destination="uq4-Gg-39P" eventType="touchUpInside" id="udp-ek-Ndh"/>
-                                    <action selector="viewTwoButtonAction:" destination="Y2F-49-qOa" eventType="touchUpInside" id="8Y4-Uc-bFT"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -380,8 +384,8 @@
         <image name="cuerda" width="92" height="87"/>
         <image name="fondo_blanco" width="425" height="601"/>
         <image name="fusion" width="170" height="55"/>
+        <image name="home40" width="60" height="60"/>
         <image name="muro" width="600" height="900"/>
-        <image name="zapato" width="97" height="81"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="CLI-9r-eXI"/>
