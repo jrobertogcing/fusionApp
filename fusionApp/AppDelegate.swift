@@ -16,96 +16,17 @@ import FBSDKLoginKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
+    
+    //Variables
     var window: UIWindow?
-
     var flagReceived = ""
-
-    
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        
-        if error != nil {
-            // ...
-            return
-        }
-        
-        guard let authentication = user.authentication else { return }
-        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
-                                                       accessToken: authentication.accessToken)
-        
-        
-        print("credential")
-        print(credential)
-        
-        //Get data Gmail
-        guard let givenName = user.profile.givenName else {return}
-        guard let familyName = user.profile.familyName else {return}
-        guard let email = user.profile.email else {return}
-        guard let image = user.profile.imageURL(withDimension: 100) else {return}
-        
-        //Save information in NSUserdefault
-        UserDefaults.standard.set(givenName, forKey: "name")
-        UserDefaults.standard.set(familyName, forKey: "lastName")
-        UserDefaults.standard.set(email, forKey: "email")
-        UserDefaults.standard.set(image.absoluteString, forKey: "image")
-        
-        guard let imageProfile = UserDefaults.standard.string(forKey: "image") else  {
-            return
-        }
-        print(imageProfile)
-        
-        
-        
-        Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
-            if let error = error {
-                print("error GMAIL")
-                print(error)
-                return
-            } else{
-                
-                print(authResult?.user as Any)
-                
-                
-                // Send to Home View Controller
-                let mainStoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let homePage = mainStoryboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
-                
-                //homePage.nameR = givenName
-                
-                self.window?.rootViewController = homePage
-                
-                
-            }
-            
-        }
-    }
-    
-    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
-        // Perform any operations when the user disconnects from app here.
-
-    }
-    
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        
-        if flagReceived == "Facebook"{
-            
-            let handled = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, sourceApplication: options[.sourceApplication] as? String, annotation: options[.annotation])
-            return handled
-
-        } else if flagReceived == "Gmail"{
-            
-             return GIDSignIn.sharedInstance().handle(url,sourceApplication:options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String, annotation: [:])
-            
-        }
-       
-        
-       return false
-        
-    }
-    
+   
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
+        //Firebase
         FirebaseApp.configure()
+        
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
         
@@ -174,6 +95,97 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
         return true
     }
+    
+    
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        
+        if error != nil {
+            // ...
+            return
+        }
+        
+        guard let authentication = user.authentication else { return }
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                       accessToken: authentication.accessToken)
+        
+        
+        print("credential")
+        print(credential)
+        
+        //Get data Gmail
+        guard let givenName = user.profile.givenName else {return}
+        guard let familyName = user.profile.familyName else {return}
+        guard let email = user.profile.email else {return}
+        guard let image = user.profile.imageURL(withDimension: 100) else {return}
+        
+        print(user)
+        
+        
+        //Save information in NSUserdefault locally
+        UserDefaults.standard.set(givenName, forKey: "name")
+        UserDefaults.standard.set(familyName, forKey: "lastName")
+        UserDefaults.standard.set(email, forKey: "email")
+        UserDefaults.standard.set(image.absoluteString, forKey: "image")
+        
+        //Save information Firebase cloud
+        saveUserInfoFirebase(name: givenName, lastName: familyName, email: email)
+        
+        guard let imageProfile = UserDefaults.standard.string(forKey: "image") else  {
+            return
+        }
+        print(imageProfile)
+        
+        
+        
+        Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
+            if let error = error {
+                print("error GMAIL")
+                print(error)
+                return
+            } else{
+                
+                print(authResult?.user as Any)
+                
+                
+                // Send to Home View Controller
+                let mainStoryboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let homePage = mainStoryboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+                
+                //homePage.nameR = givenName
+                
+                self.window?.rootViewController = homePage
+                
+                
+            }
+            
+        }
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        // Perform any operations when the user disconnects from app here.
+        
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        
+        if flagReceived == "Facebook"{
+            
+            let handled = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, sourceApplication: options[.sourceApplication] as? String, annotation: options[.annotation])
+            return handled
+            
+        } else if flagReceived == "Gmail"{
+            
+            return GIDSignIn.sharedInstance().handle(url,sourceApplication:options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String, annotation: [:])
+            
+        }
+        
+        
+        return false
+        
+    }
+    
+
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -242,6 +254,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
+    }
+
+    //MARK: Save user Firebase
+    func saveUserInfoFirebase(name: String, lastName: String, email:String) {
+
+        // For Firebase sotorage
+        let db = Firestore.firestore()
+        db.collection("usuarios").document(email).setData([
+
+            "name": name,
+            "lastName": lastName,
+            "email": email
+
+        ]) { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                print("Document successfully written!")
+            }
+        }
+
     }
 
 }

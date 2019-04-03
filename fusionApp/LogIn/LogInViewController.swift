@@ -25,9 +25,13 @@ class LogInViewController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButt
     var email  = ""
     var userName  = ""
     var userLastName  = ""
+    var midName = ""
     var telephone = ""
     var userID  = ""
     var userImage = ""
+    
+    // For Firebase sotorage
+  //  let db = Firestore.firestore()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,14 +103,7 @@ class LogInViewController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButt
             print("User logged In")
             
             UserDefaults.standard.set("Facebook", forKey: "flagRegistro")
-            
-            // Delete the local information, in case another user enter to the app
-            UserDefaults.standard.set("", forKey: "name")
-            UserDefaults.standard.set("", forKey: "lastName")
-            UserDefaults.standard.set("", forKey: "telephone")
-            UserDefaults.standard.set("", forKey: "email")
-            UserDefaults.standard.set("", forKey: "password")
-            
+                        
             let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
             
             let nextViewController = storyBoard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
@@ -144,25 +141,6 @@ class LogInViewController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButt
                 return
             }
             
-//            //Get data Gmail
-//            guard let givenName = user.profile.givenName else {return}
-//            guard let familyName = user.profile.familyName else {return}
-//            guard let email = user.profile.email else {return}
-//           let dimension = round(100 * UIScreen.main.scale)
-//            guard let image = user.profile.imageURL(withDimension: UInt(dimension)) else {return}
-//
-//            let profilePicURL = user.profile.imageURL(withDimension: 200).absoluteString
-//            print(profilePicURL)
-//
-//            print(image)
-//
-//
-//            //Save information in NSUserdefault
-//            UserDefaults.standard.set(givenName, forKey: "name")
-//            UserDefaults.standard.set(familyName, forKey: "lastName")
-//            UserDefaults.standard.set(email, forKey: "email")
-//            UserDefaults.standard.set(image, forKey: "image")
-
             
             //set flag
             UserDefaults.standard.set("Gmail", forKey: "flagRegistro")
@@ -212,20 +190,32 @@ class LogInViewController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButt
                     return
                 }
                 
+                guard let profileMidName = profile?.middleName  else {
+                    return
+                }
+                
+                
+                
                 self.userName = profileName
                 
                 self.userLastName = profileLastName
                 
                 self.userID = profileUserID
                 
+                self.midName = profileMidName
+                
                 print(self.userID)
-                // save new informatión in NSuserdefault
+                
+                // save new informatión in NSuserdefault localy
                 
                 UserDefaults.standard.set(profileName, forKey: "name")
                 UserDefaults.standard.set(profileLastName, forKey: "lastName")
                 UserDefaults.standard.set(profileUserID, forKey: "userID")
 
                 print("loaded: \(String(describing: profile?.userID))")
+                
+                //save firebase Cloud
+                //self.saveUserInfoFirebase(name: profileName, lastName: profileLastName, userID: profileUserID)
                 
                 completion("Ready")
                 
@@ -238,4 +228,25 @@ class LogInViewController: UIViewController, GIDSignInUIDelegate, FBSDKLoginButt
         })
         
     }
+    
+    
+    //MARK: SaveUser information function Firestore Beta
+    
+//    func saveUserInfoFirebase(name: String, lastName: String, userID:String) {
+//
+//        db.collection("usuarios").document(userID).setData([
+//
+//            "name": name,
+//            "lastName": lastName,
+//            "userID": userID
+//
+//        ]) { err in
+//            if let err = err {
+//                print("Error writing document: \(err)")
+//            } else {
+//                print("Document successfully written!")
+//            }
+//        }
+//
+//    }
 }
